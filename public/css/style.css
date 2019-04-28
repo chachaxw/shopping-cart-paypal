@@ -1,0 +1,90 @@
+body.has-mini-upsell {
+  background: none !important;
+}
+.fa-check-square{
+color: #0bba18;
+}
+.pt-page {
+  visibility: visible !important;
+}
+
+.map-container {
+  overflow-y: scroll;
+  height: 415px;
+  border: 1px solid rgb(213, 214, 239);
+}
+
+.modal {
+
+  padding-top: 38px;
+}
+
+.estimateTxt {
+  color: grey;
+}
+
+#myBtn {
+  color: blue;
+}
+
+.re-n {
+  /*text-decoration: line-through;*/
+  color: red;
+}
+
+/*.checkout .heading h5 {
+  font-size: 22px;
+}*/
+strong.text.shipping-free.emphasis.re-n.green {
+  color: #e60d10;
+}
+
+span.small-text {
+  font-size: 12px;
+}
+
+strong.text.shipping-free.emphasis.green {
+  color: #148614;
+}
+
+span.small-text {
+  font-size: 10px;
+}
+
+}
+.strikeThr {
+  position: relative;
+}
+
+.strikeThr:after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 13px;
+  width: 73px;
+  height: 2px;
+  background-color: #e60d10;
+}
+
+#top_bar {
+  height: 39px;
+  top: -22px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+.availability{
+padding: 2px 2px 2px 1px;
+border: 1px solid #bebebe;
+display:inline-block;
+position:relative;
+top: 3px;
+background:white;
+margin-right:4px;
+}
+.baba{
+width:10px;
+height:10px;
+float:left;
+margin-left:1px;
+}

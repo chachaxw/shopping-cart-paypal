@@ -1,0 +1,278 @@
+.text-center {
+  text-align: center;
+}
+.custom-modal {
+  min-width: 300px;
+  text-align: center;
+  font-size: 20px;
+  padding: 30px 0;
+}
+.mfp-content {
+  max-width: 800px;
+}
+.sk-circle {
+  margin: 10px auto;
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.sk-circle .sk-child {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.sk-circle .sk-child:before {
+  content:'';
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  background-color: #333;
+  border-radius: 100%;
+  -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+  animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
+}
+.sk-circle .sk-circle2 {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.sk-circle .sk-circle3 {
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+.sk-circle .sk-circle4 {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.sk-circle .sk-circle5 {
+  -webkit-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+.sk-circle .sk-circle6 {
+  -webkit-transform: rotate(150deg);
+  -ms-transform: rotate(150deg);
+  transform: rotate(150deg);
+}
+.sk-circle .sk-circle7 {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.sk-circle .sk-circle8 {
+  -webkit-transform: rotate(210deg);
+  -ms-transform: rotate(210deg);
+  transform: rotate(210deg);
+}
+.sk-circle .sk-circle9 {
+  -webkit-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  transform: rotate(240deg);
+}
+.sk-circle .sk-circle10 {
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.sk-circle .sk-circle11 {
+  -webkit-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+.sk-circle .sk-circle12 {
+  -webkit-transform: rotate(330deg);
+  -ms-transform: rotate(330deg);
+  transform: rotate(330deg);
+}
+.sk-circle .sk-circle2:before {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.sk-circle .sk-circle3:before {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+.sk-circle .sk-circle4:before {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.sk-circle .sk-circle5:before {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.sk-circle .sk-circle6:before {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
+}
+.sk-circle .sk-circle7:before {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.sk-circle .sk-circle8:before {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.sk-circle .sk-circle9:before {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+.sk-circle .sk-circle10:before {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+.sk-circle .sk-circle11:before {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+.sk-circle .sk-circle12:before {
+  -webkit-animation-delay: -0.1s;
+  animation-delay: -0.1s;
+}
+@-webkit-keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+  }
+  40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+@keyframes sk-circleBounceDelay {
+  0%, 80%, 100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+  }
+  40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}
+[data-uitype=leadform] .alert.alert-danger {
+  background: #ff3d47;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+[data-uitype=leadform].position-absolute .alert.alert-danger {
+  width: 85%;
+  top: 0;
+  left: 5%;
+  position: absolute;
+}
+[data-uitype=orderform] .alert.alert-danger {
+  background: #ff3d47;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  width: 100%;
+}
+[data-uitype=orderform] .alert.alert-danger span {
+  display: none;
+}
+/*--------------------PLUSE--------------------*/
+.pulse {
+  animation-name: pulse;
+  -webkit-animation-name: pulse;
+  animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+@keyframes pulse {
+  0% {
+      transform: scale(0.9);
+      opacity: 0.9;
+  }
+  50% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(0.9);
+      opacity: 0.9;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+      -webkit-transform: scale(0.95);
+      opacity: 0.7;
+  }
+  50% {
+      -webkit-transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      -webkit-transform: scale(0.95);
+      opacity: 0.7;
+  }
+}
+.my-modal-content {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  outline: 0;
+}
+.my-modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.my-modal-header .close {
+  margin-top: -2px;
+}
+.my-modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.my-modal-body {
+  position: relative;
+  padding: 15px;
+}
+.my-modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.my-modal-footer .btn + .btn {
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+.my-modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.my-modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .my-modal-dialog {
+      width: 600px;
+      margin: 30px auto;
+  }
+  .my-modal-content {
+      -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+.clearfix:before, .clearfix:after, .my-modal-header:before, .my-modal-header:after, .my-modal-footer:before, .my-modal-footer:after {
+  content:" ";
+  display: table;
+}
+.clearfix:after, .my-modal-header:after, .my-modal-footer:after {
+  clear: both;
+}
+.mfp-wrap.mfp-ready, .mfp-bg.mfp-ready {
+  z-index: 10000;
+}
