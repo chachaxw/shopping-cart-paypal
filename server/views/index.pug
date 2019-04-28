@@ -13,6 +13,11 @@ html(lang="en")
   link(rel="stylesheet", href="/css/popup-over.css")
   link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.1/css/all.css")
   link(rel="icon", href="images/favicon.ico", type="image/x-icon")
+  script(src="/js/utils.js")
+  script(src="/js/jquery-3.3.1.slim.min.js")
+  script(src="/js/popper.min.js")
+  script(src="/js/bootstrap.min.js")
+  script(src="/js/jquery.magnific-popup.min.js")
   script(src="https://www.paypal.com/sdk/js?client-id=Ab--raJCbvkn4IEVyJP70M8RGJkNbPQQnhpJK4CiUumArOZvhP1ae3g8mJdJAO_HNat-X1PZNhwREDaR")
   body(class="checkout has-mini-upsell has-funnels")
     span#top_bar
@@ -174,14 +179,14 @@ html(lang="en")
                                       | $137.99
                                     .package-wrap
                                       span.arrow
-                                        img(src='images/curved-red-arrow.png')
+                                        img(src='/images/curved-red-arrow.png')
                                   .row(style='margin-top: 28px;')
                                     .phone-12.columns.warrent-container
                                       .funnel-box(data-name='lifetime-warranty')
                                         .lifetime-warranty(data-display-name='Lifetime Warranty')
                                           .header
                                             label(for='funnel-lifetime-warranty')
-                                              img.bounce-right(src='images/red-arrow.857f0fc25e8c1a67.png')
+                                              img.bounce-right(src='/images/red-arrow.857f0fc25e8c1a67.png')
                                             input#funnel-lifetime-warranty(type='checkbox', name='extraItem', value='42')
                                             label(for='funnel-lifetime-warranty')
                                               | Yes, I Want
@@ -343,7 +348,7 @@ html(lang="en")
                             // <div class="encryption disclaimer-usd"><span class="smaller">All pricing is in United States of America Dollars.</span></div>
                             .text-center
                               br
-                              img(src='images/safecheckout1.png', alt='')
+                              img(src='/images/safecheckout1.png', alt='')
                             .encryption
                               i.icon-lock
                               span.smaller Secure 256-bit SSL Encryption
@@ -367,15 +372,12 @@ html(lang="en")
               .phone-12.columns
                 p.policy-links
                   a(href='javascript:void(0);', onclick="javascript:openNewWindow('page-contact.php', 'modal');")
-                    | Contact
-                    | Us |
+                    | Contact Us |
                   a(href='javascript:void(0);', onclick="javascript:openNewWindow('page-terms.php', 'modal');")
-                    | Terms and
-                    | Conditions |
+                    |  Terms and Conditions |
                   br.show-for-phone-only
                   a(href='javascript:void(0);', onclick="javascript:openNewWindow('page-privacy.php', 'modal');")
-                    | Privacy
-                    | Policy
+                    |  Privacy Policy
                 .text-center
                   a.dmca-badge(href='http://www.dmca.com/Protection/Status.aspx?ID=ef1fadd9-e577-4b7f-ac63-515756019c06', title='DMCA.com Protection Status')
                     img(src='images/dmca_protected_sml_120aef76c.png?ID=ef1fadd9-e577-4b7f-ac63-515756019c06', alt='DMCA.com Protection Status')
@@ -418,9 +420,55 @@ html(lang="en")
                 p seconds
             a(href='discount.php')
               span.couponBtn Activate 30% OFF Coupon!
-  script(src="/js/jquery-3.3.1.slim.min.js")
-  script(src="/js/popper.min.js")
-  script(src="/js/bootstrap.min.js")
-  script(src="/js/jquery.magnific-popup.min.js")
   script.
     paypal.Buttons().render('#pay_with_paypal');
+
+    $(document).off('change', 'input[type=radio][name=payment_method]');
+    $(document).on('change click', 'input[type=radio][name=payment_method]', function () {
+      var val = $(this).val();
+      if (val == 'CREDITCARD') {
+        $('.cc-form,.btn-cc').addClass('active');
+        $('.btn-paypal').removeClass('active');
+        $('.warrent-container').hide();
+        $('.shipping').show();
+      } else {
+        $('.cc-form,.btn-cc').removeClass('active');
+        $('.btn-paypal').addClass('active');
+        $('.warrent-container').show();
+        $('.shipping').hide();
+      }
+    });
+
+    $('[name=payment_method]').on("click", function () {
+
+      if ($(this).val() == 'CREDITCARD') {
+        $(".shipping").find('input, select').attr('required', 'required');
+        $(".shipping").find('input, select').attr('required', 'required');
+        $(".cc-form").find('input, select').attr('required', 'required');
+        $(".cc-form").slideDown("slow");
+      } else {
+        $(".shipping").find('input, select').removeAttr('required');
+        $(".cc-form").find('input, select').removeAttr('required');
+        $(".cc-form").slideUp("slow");
+      }
+    });
+
+    $('[name=payment_method]:checked').trigger('click');
+
+    var disFlag = false;
+    var newFlag = false;
+    var comnFlag = '';
+    $(document).off('mouseout', '#top_bar');
+    $(document).on('mouseout', '#top_bar', function () {
+      if (!newFlag) {
+        newFlag = true;
+        comnFlag = '';
+        countDown();
+        $('#exitpopup-overlay').show();
+      }
+    });
+
+    $(document).off('click', '.closeBtn');
+    $(document).on('click', '.closeBtn', function () {
+      $('#exitpopup-overlay').hide();
+    });
