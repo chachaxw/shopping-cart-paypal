@@ -17455,6 +17455,12 @@ body[data-shipping-type="regular"] .elm-price.emphasis {
 
 
 
+.checkout .payment-block.active {
+
+    display: inline-block
+
+}
+
 .checkout .payment-block {
 
     display: none;
@@ -17462,16 +17468,6 @@ body[data-shipping-type="regular"] .elm-price.emphasis {
     width: 100%
 
 }
-
-
-
-.checkout .payment-block.active {
-
-    display: inline-block
-
-}
-
-
 
 .checkout .inct {
 
