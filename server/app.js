@@ -1,4 +1,5 @@
 import Koa from 'koa';
+import chalk from 'chalk';
 import Router from 'koa-router';
 import path from 'path';
 import views from 'koa-views';
@@ -23,5 +24,5 @@ app.use(router.routes()).use(router.allowedMethods());
 app.use(koaStatic(path.join( __dirname,  staticPath)));
 
 app.listen(3000, () => {
-  console.log('App is starting at port 3000');
+  console.log(chalk.green('[koa] App is starting at port 3000'));
 });
