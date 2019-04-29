@@ -6,7 +6,7 @@ export default async (ctx, next) => {
     title: 'A nodeJS framework starter template with Koa',
     products: products,
   };
-  console.log(locals);
+  // console.log(locals);
 
   await ctx.render('index', locals);
 }

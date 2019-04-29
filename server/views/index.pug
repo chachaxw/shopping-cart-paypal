@@ -101,14 +101,14 @@ html(lang="en")
                                           spen.hide-for-phone #{item.description}
                                           br
                                           div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price #{item.price}
+                                            span.unit-price $#{item.price}
                                             | /Unit)
                                             |  -
                                             if item.hasDiscount
                                               span.discount-formula-xxx.hide
                                               | #{item.discount.percent * 100}% OFF #{item.discount.description}
                                       .package-price(style='font-size: 15px !important;')
-                                        | #{item.price}
+                                        | $#{item.price}
                                   #pid-354.package-row.pid-354.bestseller
                                     .package-name.arrow_class
                                       input#radio-354.scout_radio(type='radio', data-type='product_5', name='product', value='663', checked='checked')

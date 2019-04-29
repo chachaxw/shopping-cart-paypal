@@ -5,9 +5,11 @@ import views from 'koa-views';
 import koaSession from 'koa-session';
 import bodyParser from 'koa-bodyparser';
 import koaStatic from 'koa-static';
+import paypal from 'paypal-rest-sdk';
 
 import router from './router';
 import db from './db';
+import { paypalConfig } from './config';
 
 const app = new Koa();
 
@@ -20,6 +22,8 @@ const sessionConfig = {
   maxAge: 30 * 60 * 1000,
 };
 
+db.useDb();
+
 app.use(bodyParser());
 
 app.use(views(path.join(__dirname, './views'), { extension: 'pug' }));
@@ -30,6 +34,13 @@ app.use(router.routes()).use(router.allowedMethods());
 app.use(koaStatic(path.join( __dirname,  staticPath)));
 
 app.use(koaSession(sessionConfig, app));
+
+// PayPal config
+paypal.configure({
+  'mode': paypalConfig.mode, //sandbox or live
+  'client_id': paypalConfig.clientId,
+  'client_secret': paypalConfig.clientSecret,
+});
 
 app.listen(3000, () => {
   console.log(chalk.green('[koa] App is starting at port 3000'));
