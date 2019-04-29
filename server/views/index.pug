@@ -40,7 +40,7 @@ html(lang="en")
                   br
                   strong PROMO TODAY
                   |  - Buy
-                  span.emphasis2 10 Diabetic Herbal Patch to Get 10 FREE (120pcs)
+                  span.emphasis2  10 Diabetic Herbal Patch to Get 10 FREE (120pcs)
                   |  TODAY for ONLY
                   br.hide-for-desktop-up
                   span.price.discounted-price(style=' font-weight: bold; color: #48cd87;')
@@ -90,74 +90,25 @@ html(lang="en")
                             #product-quantity-radio.product-quantity-radio
                               .row
                                 .phone-12.columns
-                                  #pid-312.package-row.pid-312
-                                    .package-name
-                                      input#radio-312.scout_radio(type='radio', data-type='product_1', name='product', value='46')
-                                      label.radio-title(for='radio-312', style='font-size: 15px !important;')
-                                        span.quantity
-                                          | Buy 1 (6pcs) -
-                                          span.show-for-phone Diabetic Patch
-                                        spen.hide-for-phone Diabetic Patch
-                                        br
-                                        div(style='font-weight:bold;color:#0688d2;') (
-                                          span.unit-price $13.97
-                                          | /Unit)
-                                          |                                                                         -
-                                          span.discount-formula-xxx.hide
-                                          |  50                                                                      % OFF
-                                    .package-price(style='font-size: 15px !important;')
-                                      | $13.97
-                                  #pid-353.package-row.pid-353
-                                    .package-name.arrow_class
-                                      input#radio-353.scout_radio(type='radio', data-type='product_2', name='product', value='47')
-                                      label.radio-title(for='radio-353', style='font-size: 15px !important;')
-                                        span.quantity
-                                          | Buy 2 Free 1 (18pcs) -
-                                          span.show-for-phone Diabetic Patch
-                                          spen.hide-for-phone Diabetic Patch
+                                  each item, index in products
+                                    div(class="package-row")
+                                      .package-name
+                                        input#radio-312.scout_radio(type='radio', data-type='product_1', name='product', value='46')
+                                        label.radio-title(for='radio-312', style='font-size: 15px !important;')
+                                          span.quantity
+                                            | #{item.name}
+                                            span.show-for-phone #{item.description}
+                                          spen.hide-for-phone #{item.description}
                                           br
                                           div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price $9.32
+                                            span.unit-price #{item.price}
                                             | /Unit)
-                                            |                                                                         -
-                                            span.discount-formula-xxx.hide
-                                            |  50                                                                        % OFF
-                                    .package-price(style='font-size: 15px !important;')
-                                      | $27.97
-                                  #pid-356.package-row.pid-356
-                                    .package-name
-                                      input#radio-356.scout_radio(type='radio', data-type='product_3', name='product', checked='checked', value='48')
-                                      label.radio-title(for='radio-356', style='font-size: 15px !important;')
-                                        span.quantity
-                                          | Buy 3 Free 2 (30pcs) -
-                                          span.show-for-phone Diabetic Patch
-                                          spen.hide-for-phone Diabetic Patch
-                                          br
-                                          div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price $8.39
-                                            | /Unit)
-                                            |                                                                         -
-                                            span.discount-formula-xxx.hide
-                                            |  50                                                                        % OFF
-                                    .package-price(style='font-size: 15px !important;')
-                                      | $41.97
-                                  #pid-355.package-row.pid-355
-                                    .package-name.arrow_class
-                                      input#radio-355.scout_radio(type='radio', data-type='product_4', name='product', value='659')
-                                      label.radio-title(for='radio-355', style='font-size: 15.px !important;')
-                                        span.quantity
-                                          | Buy 6 Free 4 (60pcs) -
-                                          span.show-for-phone Diabetic Patch
-                                          spen.hide-for-phone Diabetic Patch
-                                          br
-                                          div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price $7.59
-                                            | /Unit)
-                                            |                                                                         -
-                                            span.discount-formula-xxx.hide
-                                            |  50                                                                        % OFF
-                                    .package-price(style='font-size: 15px !important;')
-                                      | $75.97
+                                            |  -
+                                            if item.hasDiscount
+                                              span.discount-formula-xxx.hide
+                                              | #{item.discount.percent * 100}% OFF #{item.discount.description}
+                                      .package-price(style='font-size: 15px !important;')
+                                        | #{item.price}
                                   #pid-354.package-row.pid-354.bestseller
                                     .package-name.arrow_class
                                       input#radio-354.scout_radio(type='radio', data-type='product_5', name='product', value='663', checked='checked')
