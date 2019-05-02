@@ -7,7 +7,7 @@ const db = mongoose.connection;
 mongoose.connect(dbUrl, {useNewUrlParser: true});
 
 db.once('open', () => {
-  console.log(chalk.green('[mongoose] 连接MongoDB成功'));
+  console.log(chalk.green('[mongoose] Connect MongoDB Success!'));
 });
 
 db.on('error', (error) => {
@@ -16,7 +16,7 @@ db.on('error', (error) => {
 });
 
 db.on('close', () => {
-  console.log(chalk.red('[mongoose] 数据库断开，重新连接数据库'));
+  console.log(chalk.red('[mongoose] MongoDB disconnected, and try reconnect!'));
   mongoose.connect(dbUrl, {server: { auto_reconnect: true }});
 });
 

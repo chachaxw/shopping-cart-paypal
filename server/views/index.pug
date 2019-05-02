@@ -69,16 +69,16 @@ html(lang="en")
                           div(style='font-size:15px;padding-bottom:10px')
                             span Stock Availability:
                             span(style='font-weight:bold;color:red;')  LOW
-                            span.availability
+                            span.availability(style='margin-left: 5px')
                               span.baba(style='background:red;')
                               span.baba
                               span.baba
                               span.baba
                           div(style='font-size:15px;padding-bottom:5px')
                             | Your order is scheduled to ship by
-                            span(style='font-weight:bold;color:red;')
+                            span(style='font-weight:bold;color:red;margin-left: 5px')
                               script.
-                                getDate(0);
+                                getDate(4);
                           .phone-12.columns.product-selection-row
                             h5.step-title Step #1: Select Quantity
                             .list-title.clearfix(style='')
@@ -91,46 +91,51 @@ html(lang="en")
                               .row
                                 .phone-12.columns
                                   each item, index in products
-                                    div(class="package-row")
-                                      .package-name
-                                        input#radio-312.scout_radio(type='radio', data-type='product_1', name='product', value='46')
-                                        label.radio-title(for='radio-312', style='font-size: 15px !important;')
-                                          span.quantity
-                                            | #{item.name}
-                                            span.show-for-phone #{item.description}
-                                          spen.hide-for-phone #{item.description}
-                                          br
-                                          div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price $#{item.price}
-                                            | /Unit)
-                                            |  -
-                                            if item.hasDiscount
-                                              span.discount-formula-xxx.hide
-                                              | #{item.discount.percent * 100}% OFF #{item.discount.description}
-                                      .package-price(style='font-size: 15px !important;')
-                                        | $#{item.price}
-                                  #pid-354.package-row.pid-354.bestseller
-                                    .package-name.arrow_class
-                                      input#radio-354.scout_radio(type='radio', data-type='product_5', name='product', value='663', checked='checked')
-                                      label.radio-title(for='radio-354', style='font-size: 15.px !important;')
-                                        span.best-seller-text(style='text-transform: uppercase; font-weight: 700')
-                                          b BEST SELLER
-                                        span.quantity
-                                          | Buy 10 Free 10 (120pcs) -
-                                          span.show-for-phone Diabetic Patch
-                                          spen.hide-for-phone Diabetic Patch
-                                          br
-                                          div(style='font-weight:bold;color:#0688d2;') (
-                                            span.unit-price $6.89
-                                            | /Unit)
-                                            |                                                                         -
-                                            span.discount-formula-xxx.hide
-                                            |  50                                                                        % OFF
-                                    .package-price(style='font-size: 15px !important;')
-                                      | $137.99
-                                    .package-wrap
-                                      span.arrow
-                                        img(src='/images/curved-red-arrow.png')
+                                    if item.bestSeller
+                                      div(class="package-row bestseller")
+                                        .package-name.arrow_class
+                                          input.scout_radio(type='radio', data-id=item.id, name='product', checked='checked', id='radio-'+index)
+                                          label.radio-title(for='radio-'+index, style='font-size: 15.px !important;')
+                                            span.best-seller-text(style='text-transform: uppercase; font-weight: 700')
+                                              b #{item.name}
+                                            span.quantity
+                                              | Buy 10 Free 10 (120pcs) -
+                                              span.show-for-phone  #{item.description}
+                                              spen.hide-for-phone #{item.description}
+                                              br
+                                              div(style='font-weight:bold;color:#0688d2;') (
+                                                span.unit-price $#{item.price/item.quantity}
+                                                | /Unit)
+                                                |                                                                         -
+                                                if item.hasDiscount
+                                                  span.discount-formula-xxx.hide
+                                                  | #{(item.discount.percent || 0) * 100}% OFF
+                                                  |  #{item.discount.description}                                                                    % OFF
+                                        .package-price(style='font-size: 15px !important;')
+                                          | $#{item.price}
+                                        .package-wrap
+                                          span.arrow
+                                            img(src='/images/curved-red-arrow.png')
+                                    else
+                                      div(class="package-row")
+                                        .package-name
+                                          input.scout_radio(type='radio', data-id=item.id, name='product', id='radio-'+index)
+                                          label.radio-title(for='radio-'+index, style='font-size: 15px !important;')
+                                            span.quantity
+                                              | #{item.name}
+                                              span.show-for-phone  #{item.description}
+                                            spen.hide-for-phone #{item.description}
+                                            br
+                                            div(style='font-weight:bold;color:#0688d2;') (
+                                              span.unit-price $#{item.price/item.quantity}
+                                              | /Unit)
+                                              |  -
+                                              if item.hasDiscount
+                                                span.discount-formula-xxx.hide
+                                                | #{(item.discount.percent || 0) * 100}% OFF
+                                                |  #{item.discount.description}
+                                        .package-price(style='font-size: 15px !important;')
+                                          | $#{item.price}
                                   .row(style='margin-top: 28px;')
                                     .phone-12.columns.warrent-container
                                       .funnel-box(data-name='lifetime-warranty')
@@ -162,7 +167,6 @@ html(lang="en")
                             label(for='cctype-paypal')
                               input#cctype-paypal(checked='checked', type='radio', required='', name='payment_method', value='PAYPAL')
                               img(src='images/paypal-long-en.56a335802bcd73be.jpg')
-                              // <div class="text-cctype-paypal smaller">Always free shipping when paying with PayPal! </div>
                           .phone-12.columns
                             .phone-12.columns.types
                               .cc-form
@@ -289,7 +293,7 @@ html(lang="en")
                                       span.smaller
                                         | When paying with PayPal, your order will be delivered to the selected Shipping Address from your PayPal account. Please ensure the correct address is chosen. You can edit or change this address once you&apos;ve signed into your account.
                                     p.coupnRdTxt
-                                    div#pay_with_paypal
+                                    div#paypal-button-container
                                   .payment-block.btn-cc
                                     p.coupnRdTxt
                                     button#pay_with_cc.custom-button.button-flat.submitbutton.expand.btn-cc.a-cc.button-2(type='button', data-uitype='submit_button')
@@ -372,7 +376,15 @@ html(lang="en")
             a(href='discount.php')
               span.couponBtn Activate 30% OFF Coupon!
   script.
-    paypal.Buttons().render('#pay_with_paypal');
+    paypal.Buttons({
+      createOrder: function() {
+        var SETEC_URL = 'http://localhost:3000/api/order';
+
+        return $.post(SETEC_URL, function(data) {
+          console.log(data);
+        });
+      }
+    }).render('#paypal-button-container');
 
     $(document).off('change', 'input[type=radio][name=payment_method]');
     $(document).on('change click', 'input[type=radio][name=payment_method]', function () {

@@ -1,13 +1,14 @@
 import PayPal from '../paypal';
+import ProductModel from '../models';
 
-var paymentData = {
+const data = {
   "intent": "sale",
   "payer": {
     "payment_method": "paypal"
   },
   "redirect_urls": {
-    "return_url": "http://return.url",
-    "cancel_url": "http://cancel.url"
+    "return_url": "http://localhost:3000/",
+    "cancel_url": "http://localhost:3000/"
   },
   "transactions": [{
     "item_list": {
@@ -21,17 +22,36 @@ var paymentData = {
     },
     "amount": {
       "currency": "USD",
-      "total": "1.00"
+      "total": "15.99"
     },
     "description": "This is the payment description."
   }]
 };
 
-PayPal.payment.create(paymentData, (error, payment) => {
-  if (error) {
-    throw error;
-  } else {
-    console.log("Create Payment Response");
-    console.log(payment);
-  }
-});
+export default async (ctx, next) => {
+  // console.log('请求', ctx.request);
+
+  new Promise((resolve, reject) => {
+    PayPal.payment.create(data, (error, payment) => {
+      if (error) {
+        reject(error);
+      } else {
+        // console.log("Create Payment Response");
+        // console.log(payment);
+        resolve(payment);
+      }
+    });
+  }).then(data => {
+    console.log('Result', data);
+    ctx.status = 200;
+    ctx.body = {
+      errMsg: 'Ok',
+      data,
+    };
+  }).catch(err => {
+    ctx.body = {
+      errMsg: 'Error',
+      data: err,
+    };
+  });
+}

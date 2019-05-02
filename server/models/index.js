@@ -7,7 +7,16 @@ const productSchema = new Schema({
     required: true
   },
   price: Number,
+  quantity: {
+    type: Number,
+    default: 1,
+    required: true,
+  },
   hasDiscount: {
+    type: Boolean,
+    default: false,
+  },
+  bestSeller: {
     type: Boolean,
     default: false,
   },
