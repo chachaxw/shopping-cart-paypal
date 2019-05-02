@@ -378,10 +378,15 @@ html(lang="en")
   script.
     paypal.Buttons({
       createOrder: function() {
-        var SETEC_URL = 'http://localhost:3000/api/order';
+        var SETEC_URL = 'http://localhost:3000/api/order/payment';
 
-        return $.post(SETEC_URL, function(data) {
-          console.log(data);
+        var def = $.Deferred();
+
+        return $.post(SETEC_URL).done(function(res) {
+          console.log(res);
+          return res.token;
+        }).fail(function(err) {
+          return err;
         });
       }
     }).render('#paypal-button-container');

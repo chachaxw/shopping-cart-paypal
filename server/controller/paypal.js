@@ -31,27 +31,35 @@ const data = {
 export default async (ctx, next) => {
   // console.log('请求', ctx.request);
 
-  new Promise((resolve, reject) => {
-    PayPal.payment.create(data, (error, payment) => {
+  const token = await new Promise((resolve, reject) => {
+    PayPal.payment.create(data, (error, res) => {
       if (error) {
         reject(error);
       } else {
         // console.log("Create Payment Response");
-        // console.log(payment);
-        resolve(payment);
+        // console.log(res);
+        let token;
+        const links = res.links;
+
+        for (let link of links) {
+          if (link.rel === 'approval_url') {
+            token = link.href.match(/EC-\w+/)[0];
+          }
+        }
+
+        resolve(token);
       }
     });
-  }).then(data => {
-    console.log('Result', data);
-    ctx.status = 200;
+  });
+
+  if (token) {
     ctx.body = {
       errMsg: 'Ok',
-      data,
+      token,
     };
-  }).catch(err => {
+  } else {
     ctx.body = {
-      errMsg: 'Error',
-      data: err,
+      errMsg: 'There\'s no token!',
     };
-  });
+  }
 }

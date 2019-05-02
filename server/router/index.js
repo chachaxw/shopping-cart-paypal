@@ -7,6 +7,6 @@ const router = new Router();
 
 router.get('/', HomeController);
 
-router.post('/api/order', PayPalContorller);
+router.post('/api/order/payment', PayPalContorller);
 
 export default router;
