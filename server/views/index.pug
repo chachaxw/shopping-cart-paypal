@@ -18,6 +18,7 @@ html(lang="en")
   script(src="/js/popper.min.js")
   script(src="/js/bootstrap.min.js")
   script(src="/js/jquery.magnific-popup.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js")
   script(src="https://www.paypal.com/sdk/js?client-id=Ab--raJCbvkn4IEVyJP70M8RGJkNbPQQnhpJK4CiUumArOZvhP1ae3g8mJdJAO_HNat-X1PZNhwREDaR")
   body(class="checkout has-mini-upsell has-funnels")
     span#top_bar
@@ -380,13 +381,15 @@ html(lang="en")
       createOrder: function() {
         var SETEC_URL = 'http://localhost:3000/api/order/payment';
 
-        var def = $.Deferred();
-
-        return $.post(SETEC_URL).done(function(res) {
-          console.log(res);
-          return res.token;
-        }).fail(function(err) {
-          return err;
+        return new Promise(function(resolve, reject) {
+          $.post(SETEC_URL, function(res) {
+            console.log(res);
+            if (res && res.token) {
+              resolve(res.token);
+            } else {
+              reject(res);
+            }
+          });
         });
       }
     }).render('#paypal-button-container');
