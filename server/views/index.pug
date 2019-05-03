@@ -120,7 +120,7 @@ html(lang="en")
                                     else
                                       div(class="package-row")
                                         .package-name
-                                          input.scout_radio(type='radio', data-id=item.id, name='product', id='radio-'+index)
+                                          input.scout_radio(type='radio', data-id=item.id, name='product', checked='checked', id='radio-'+index)
                                           label.radio-title(for='radio-'+index, style='font-size: 15px !important;')
                                             span.quantity
                                               | #{item.name}

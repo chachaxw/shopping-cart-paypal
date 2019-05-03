@@ -20,6 +20,10 @@ const productSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  currency: {
+    type: String,
+    default: 'USD',
+  },
   discount: {
     percent: Number,
     description: String,
