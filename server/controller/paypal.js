@@ -26,7 +26,7 @@ export default async (ctx, next) => {
           }]
         },
         amount: {
-          currency: 'USD',
+          currency: product.currency,
           total,
         },
         description: "This is the payment description."
