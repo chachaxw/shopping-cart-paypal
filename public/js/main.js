@@ -3,7 +3,11 @@ $(document).ready(function() {
     createOrder: function() {
       var apiUrl = 'http://localhost:3000/api/order/payment';
       var selected = $('input[type=radio][name=product]:checked').attr('data-id');
-      var data = { id: selected };
+      var extraItem = $('input[type=checkbox][name=extraItem]').prop('checked');
+      var data = {
+        id: selected,
+        extraItem,
+      };
 
       return new Promise(function(resolve, reject) {
         $.ajax({
