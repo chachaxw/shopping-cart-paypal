@@ -144,7 +144,7 @@ html(lang="en")
                                           .header
                                             label(for='funnel-lifetime-warranty')
                                               img.bounce-right(src='/images/red-arrow.857f0fc25e8c1a67.png')
-                                            input#funnel-lifetime-warranty(type='checkbox', name='extraItem', value='42')
+                                            input#funnel-lifetime-warranty(type='checkbox', name='extraItem', value='42', style='margin-right: 10px')
                                             label(for='funnel-lifetime-warranty')
                                               | Yes, I Want
                                               | Lifetime Protection
@@ -374,6 +374,23 @@ html(lang="en")
               span
                 p minutes
                 p seconds
-            a(href='discount.php')
+            a(href='/discount')
               span.couponBtn Activate 30% OFF Coupon!
+    // Notification Popup
+    section.custom-social-proof
+      .custom-notification
+        .custom-notification-container
+          .custom-notification-image-wrapper
+            img(src='images/diabex.png')
+          .custom-notification-content-wrapper(style='color: black !important;')
+            p.custom-notification-content
+              span#purchased_person
+              span  in
+              span#purchased_country
+              br
+              | bought
+              b
+                span#purchased_qty
+                |  Diabetic Patch
+        .custom-close
   script(src="/js/main.js")
